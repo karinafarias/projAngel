@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-			<title>Listagem de Polos</title>
-
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-    {%include "model-header.html" %}
+{% extends 'base.html' %}
+{% block content %}
+{% include 'model-header.html' %}
           <div id="layoutSidenav_content">
 
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">Polo {{polo.nomePolo}}</h1>
+                    <h1 class="mt-4">Polo {{ polo.nomePolo }}</h1>
                     <ol class="breadcrumb mb-4">
-                           <li class="breadcrumb-item active"><a href="listaPolos" >Lista de Polos</a></li>
+                           <li class="breadcrumb-item active"><a href="{% url 'index' %}" >Lista de Polos</a></li>
                            <li class="breadcrumb-item">Consulta</li>
                     </ol>
                     <div class="card mb-4">
@@ -36,7 +25,7 @@
 
                                             <select id="inputState" name="polo" id="{{polo.idPolo}}" class="form-control" disabled>
 
-                                                <option value="">{{polo.nomePolo}}</option>
+                                                <option value="">{{ polo.nomePolo }}</option>
                                                 <option value="1">Rio de Janeiro</option>
                                                 <option value="2">Espirito Santo</option>
                                             </select>
@@ -48,9 +37,16 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label class="small mb-1" >Quantidade de Terminais</label>
-                                            <input class="form-control py-3" name="unidadeProduto" id="unidadeProduto" type="text" placeholder="" value="" disabled/>
+                                            <input class="form-control py-3" name="unidadeProduto" id="unidadeProduto" type="text" placeholder="" value="{{polo.qtdEstoque}}" disabled/>
                                         </div>
                                     </div>
+
+                                     <div class="col-md-2">
+                                        <div class="form-group">
+                                            <button class="btn btn-success">Adicionar terminal </button>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <table id="testTable" class="table table-striped table-hover">
                                             <thead>
@@ -62,15 +58,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                    {%for polo in listaPolo %}
+
+
+
                                                  <tr data-href="#">
-                                                    <td><a href="consultarTerminal?id={{terminal.id}}">{{ terminal.nomePolo }}</a></td>
+                                                    <td><a href="consultarTerminal?id={{terminal.id}}">{{ terminal.serial }}</a></td>
                                                      <td></td>
-                                                    <td><a href="consultarTerminal?id={{terminal.id}}">{{terminal.qtdEstoque}}</a></td>
-                                                    <td><a href="consultarTerminal?id={{terminal.id}}"></a>{{terminal.qtdEstoque}}</td>
-                                                    <td></td>
-                                                    {%endfor%}
+                                                    <td><a href="consultarTerminal?id={{terminal.id}}">{{terminal.status}}</a></td>
+                                                    <td><a href="consultarTerminal?id={{terminal.id}}"></a></td>
+                                                     <td><a href="#"><button class="btn btn-success">Transferir Terminal</button></a></td>
+
                                                 </tr>
+
 
                                             </tbody>
                                 </table>
@@ -78,19 +77,5 @@
                             </form>
                         </div>
                     </main>
-                       {%include "model-footer.html"%}
-
-
-
-
-                <script src="js/jquery-3.4.1.min.js"></script>
-                <script src="js/all.min.js"></script>
-                <script src="js/scripts.js"></script>
-                <script src="js/resilia.js"></script>
-                <script src="assets/demo/datatables-demo.js"></script>
-                <script src="js/jquery.mask.min.js"></script>
-                <script src="js/bootstrap.bundle.min.js"></script>
-                <script src="js/dataTables.bootstrap4.min.js"></script>
-
-    </body>
-</html>
+{%include "model-footer.html"%}
+{% endblock %}

@@ -2,6 +2,36 @@
 {% block content %}
 {% include 'model-header.html' %}
 
+ <div id="layoutSidenav_content">
 
+            <main>
+                <div class="container-fluid">
+                    <h1 class="mt-4">Cadastrar Novo Polo</h1>
+                        <ol class="breadcrumb mb-4">
+                           <li class="breadcrumb-item active"><a href="{% url 'index' %}" >Lista de Polos</a></li>
+                           <li class="breadcrumb-item" >Cadastro de Polo</li>
+                        </ol>
+                    <div class="card mb-4">
 
+                        <form class="form-inline" >
+
+                            <div class="card" style="width: 18rem;" align="center">
+
+                                <div align="center">
+                                 <div class="card-body">
+                                    <h5 class="card-title">Novo Polo</h5>
+                                    <label class="my-1 mr-2" >Digite o nome do Polo:</label>
+                                    <input type="text" class="form-control mb-2 mr-sm-2">
+                                    <a href="#" class="btn btn-primary">Cadastrar</a>
+                                 </div>
+                                    </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </main>
+</div>
+{% include 'model-footer.html' %}
 {% endblock %}

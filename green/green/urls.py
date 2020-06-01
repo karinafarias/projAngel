@@ -7,7 +7,7 @@ urlpatterns = [
     path('', views.index , name = 'index'),
     path('admin/', admin.site.urls),
     path('consultarPolo/<int:idPolo>', views.consultarPolo, name = 'consultarPolo'),
-    path('cadastrarPolo', views.cadastrarPolo, name = 'cadastrarPolo')
-
+    path('cadastrarPolo', views.cadastrarPolo, name = 'cadastrarPolo'),
+    path ('cadastro', views.cadastro, name= 'cadastro')
 
 ]

@@ -11,24 +11,25 @@
                            <li class="breadcrumb-item active"><a href="{% url 'index' %}" >Lista de Polos</a></li>
                            <li class="breadcrumb-item" >Cadastro de Polo</li>
                         </ol>
-                    <div class="card mb-4">
+                    <div class="card mb-4" style="align-items: center">
+                        <div style="margin: 55px">
+                            <form method="post" action="{% url 'cadastro' %}" class="form-inline" >
+                                {% csrf_token %}
 
-                        <form class="form-inline" >
+                                <div class="card" style="width: 18rem;" align="center">
 
-                            <div class="card" style="width: 18rem;" align="center">
 
-                                <div align="center">
-                                 <div class="card-body">
-                                    <h5 class="card-title">Novo Polo</h5>
-                                    <label class="my-1 mr-2" >Digite o nome do Polo:</label>
-                                    <input type="text" class="form-control mb-2 mr-sm-2">
-                                    <a href="#" class="btn btn-primary">Cadastrar</a>
-                                 </div>
-                                    </div>
+                                     <div class="card-body">
+                                        <h5 class="card-title">Novo Polo</h5>
+                                        <label class="my-1 mr-2" >Digite o nome do Polo:</label>
+                                        <input type="text" class="form-control mb-2 mr-sm-2" name="novoPolo" placeholder="Ex: Rio de Janeiro">
+                                         <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                     </div>
 
-                            </div>
-                        </form>
 
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </main>

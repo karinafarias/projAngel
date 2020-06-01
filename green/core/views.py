@@ -17,15 +17,16 @@ def cadastro(request):
         if not novoPolo.strip():
             print ('Campo nome do polo está em branco.')
             return redirect('cadastro')
-        if Polo.objects.filter(nomePolo = novoPolo).exists():
+        if Polo.objects.filter(nomePolo=novoPolo).exists():
             print ('Polo já cadastrado')
             return redirect('cadastro')
-        polo = Polo.objects.create(nomePolo = novoPolo, qtdEstoque = 0)
+        polo = Polo.objects.create(nomePolo=novoPolo, qtdEstoque=0)
         polo.save()
         print('Polo cadastrado com sucesso')
         return redirect('/')
     else:
         return render(request, 'cadastrarPolo.html')
+
 def consultarPolo(request, idPolo):
     polo = get_object_or_404(Polo, pk=idPolo)
     dadoPolo = {
